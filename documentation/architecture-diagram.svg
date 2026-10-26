@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="45" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">
+    ARINC755Forge Pro (v1.0.0) Architecture &amp; Guidance Pipeline
+  </text>
+  <text x="480" y="70" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#94a3b8">
+    Multi-Mode Receiver (MMR) &amp; GBAS/GLS Landing System | RTCA DO-253D &amp; ICAO Annex 10 Vol I
+  </text>
+
+  <!-- Block 1: Ground Subsystem & VDB Broadcast -->
+  <g transform="translate(40, 110)" filter="url(#shadow)">
+    <rect width="250" height="370" rx="8" fill="#111827" stroke="#1f293d" stroke-width="1.5"/>
+    <rect width="250" height="40" rx="8" fill="#1e293b"/>
+    <text x="125" y="26" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#38bdf8">GBAS GROUND STATION (GAST-D)</text>
+    <text x="20" y="75" font-family="monospace" font-size="12" fill="#cbd5e1">• 4x Reference Receivers</text>
+    <text x="20" y="105" font-family="monospace" font-size="12" fill="#cbd5e1">• VHF Data Broadcast (VDB)</text>
+    <text x="35" y="125" font-family="monospace" font-size="11" fill="#94a3b8">- 108.025 to 117.950 MHz</text>
+    <text x="35" y="145" font-family="monospace" font-size="11" fill="#94a3b8">- D8PSK 31.5 kbps TDMA</text>
+    <text x="20" y="175" font-family="monospace" font-size="12" fill="#cbd5e1">• MT 1 Pseudo-Range Corrections</text>
+    <text x="20" y="205" font-family="monospace" font-size="12" fill="#cbd5e1">• MT 2 Ground Station Data</text>
+    <text x="20" y="235" font-family="monospace" font-size="12" fill="#cbd5e1">• MT 4 Final Approach Segment</text>
+    <text x="35" y="255" font-family="monospace" font-size="11" fill="#94a3b8">- GPA 3.00°, TCH 50.0 ft</text>
+    <text x="35" y="275" font-family="monospace" font-size="11" fill="#94a3b8">- 32-bit CRC (0xEDB88320)</text>
+    <rect x="20" y="325" width="210" height="30" rx="4" fill="#042f2e" stroke="#14b8a6"/>
+    <text x="125" y="345" text-anchor="middle" font-family="monospace" font-size="11" fill="#2dd4bf">FAA TSO-C161a / C162a</text>
+  </g>
+
+  <!-- Block 2: Multi-Mode Receiver (MMR / ARINC 755) -->
+  <g transform="translate(350, 110)" filter="url(#shadow)">
+    <rect width="260" height="370" rx="8" fill="#111827" stroke="#06b6d4" stroke-width="1.5"/>
+    <rect width="260" height="40" rx="8" fill="url(#cyanGrad)"/>
+    <text x="130" y="26" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#041421">ARINC 755 MULTI-MODE RCVR</text>
+    <text x="20" y="75" font-family="monospace" font-size="12" fill="#e2e8f0">• VDB RF Front-End &amp; Demod</text>
+    <text x="20" y="105" font-family="monospace" font-size="12" fill="#e2e8f0">• FAS Data Block Parser &amp; CRC</text>
+    <text x="20" y="135" font-family="monospace" font-size="12" fill="#e2e8f0">• Differential PVT Fix Engine</text>
+    <text x="20" y="165" font-family="monospace" font-size="12" fill="#e2e8f0">• Deviation DDM Math (±150 uA)</text>
+    <text x="20" y="195" font-family="monospace" font-size="12" fill="#e2e8f0">• Cat I / II / III Alert Limits</text>
+    <text x="35" y="215" font-family="monospace" font-size="11" fill="#94a3b8">- Cat III: LAL 10.7m / VAL 5.3m</text>
+    <text x="20" y="245" font-family="monospace" font-size="12" fill="#e2e8f0">• ARINC 429 Bus Packaging</text>
+    <text x="35" y="265" font-family="monospace" font-size="11" fill="#94a3b8">- Label 173 (LOC Deviation)</text>
+    <text x="35" y="285" font-family="monospace" font-size="11" fill="#94a3b8">- Label 174 (G/S Deviation)</text>
+    <text x="20" y="315" font-family="monospace" font-size="12" fill="#e2e8f0">• Bit 32 Parity &amp; Label Reversal</text>
+    <rect x="20" y="325" width="220" height="30" rx="4" fill="#172554" stroke="#3b82f6"/>
+    <text x="130" y="345" text-anchor="middle" font-family="monospace" font-size="11" fill="#60a5fa">DO-253D AIRBORNE MOPS</text>
+  </g>
+
+  <!-- Block 3: Cockpit Displays & Autoland Guidance -->
+  <g transform="translate(670, 110)" filter="url(#shadow)">
+    <rect width="250" height="370" rx="8" fill="#111827" stroke="#1f293d" stroke-width="1.5"/>
+    <rect width="250" height="40" rx="8" fill="#1e293b"/>
+    <text x="125" y="26" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#a855f7">COCKPIT AUTOLAND FLIGHT OPS</text>
+    <text x="20" y="75" font-family="monospace" font-size="12" fill="#cbd5e1">• Primary Flight Display (PFD)</text>
+    <text x="35" y="95" font-family="monospace" font-size="11" fill="#94a3b8">- CDI Deviation Needles</text>
+    <text x="35" y="115" font-family="monospace" font-size="11" fill="#94a3b8">- Flight Director Guidance Bars</text>
+    <text x="20" y="145" font-family="monospace" font-size="12" fill="#cbd5e1">• Flight Control Computer (FCC)</text>
+    <text x="35" y="165" font-family="monospace" font-size="11" fill="#94a3b8">- Cat-III Dual Autoland</text>
+    <text x="35" y="185" font-family="monospace" font-size="11" fill="#94a3b8">- Flare &amp; Rollout Steering</text>
+    <text x="20" y="215" font-family="monospace" font-size="12" fill="#cbd5e1">• Autothrottle (A/T Speed Decel)</text>
+    <text x="20" y="245" font-family="monospace" font-size="12" fill="#cbd5e1">• Flight Management (FMC/FMS)</text>
+    <text x="20" y="275" font-family="monospace" font-size="12" fill="#cbd5e1">• Flight Data Recorder (FDR)</text>
+    <rect x="20" y="325" width="210" height="30" rx="4" fill="#3b0764" stroke="#a855f7"/>
+    <text x="125" y="345" text-anchor="middle" font-family="monospace" font-size="11" fill="#d8b4fe">ARINC 429 / AFDX INTEGRATED</text>
+  </g>
+
+  <!-- Connectors -->
+  <line x1="290" y1="295" x2="350" y2="295" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="610" y1="295" x2="670" y2="295" stroke="#06b6d4" stroke-width="2"/>
+</svg>
